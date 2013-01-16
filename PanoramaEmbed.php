@@ -3,7 +3,7 @@
 Plugin Name: Panorama Embed 
 Plugin URI: http://gpwrite.com/
 Description: Allows you to embed panoramas or virtual tours in your blog. Either embedded directly within an iframe, or with a linked picture opening a new window. Works without problems for any type of panorama. (or anything you want to embed for that matter)
-Version: 1.0
+Version: 1.4
 Date: Januari, 2013
 Author: Gede Pasek
 Author URI: http://gpwrite.com/

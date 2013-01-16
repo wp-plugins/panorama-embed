@@ -5,7 +5,7 @@ Donate link: http://gpwrite.com/panorama-embed-for-wordpress/
 Tags: panorama,embed,360 degree panorama,embedding,iframe,ptgui,krpano,virtual tour,360,kolor,pano2vr,panotour,flash panorama,html5 panorama,photography,vr,salado,salado player,ffp,flashificator,gigapixel
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 1.2
+Stable tag: 1.4
 License: GPLv2 or later
 
 == Description ==
@@ -37,6 +37,9 @@ Probably yes, because the panorama is either in an iframe, or new window.
 If the panoramas or virtual tours are each in their own directory, yes.
 
 == Changelog ==
+
+= 1.4.0 =
+* 4th Release (Will learn SVN, I promise) No changes in software
 
 = 1.2.0 =
 * Third Release (messed up with SVN again) No changes in software
