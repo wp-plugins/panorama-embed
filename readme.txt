@@ -38,5 +38,8 @@ If the panoramas or virtual tours are each in their own directory, yes.
 
 == Changelog ==
 
+= 1.1.0 =
+* Second Release (messed up with SVN) No changes in software
+
 = 1.0.0 =
 * Initial Release
