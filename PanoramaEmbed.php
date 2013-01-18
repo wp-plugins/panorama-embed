@@ -3,7 +3,7 @@
 Plugin Name: Panorama Embed 
 Plugin URI: http://gpwrite.com/
 Description: Allows you to embed panoramas or virtual tours in your blog. Either embedded directly within an iframe, or with a linked picture opening a new window. Works without problems for any type of panorama. (or anything you want to embed for that matter)
-Version: 1.5
+Version: 1.6
 Date: Januari, 2013
 Author: Gede Pasek
 Author URI: http://gpwrite.com/
@@ -21,15 +21,18 @@ function panoramaembedGP($content) {
 	for ($i=0; $i<count($thePano); $i++) {
 		$panotags[] = $thePano[0][$i];
 		$abspanoPath = $serv . $thePano[1][$i];
-
-		if (file_exists($abspanoPath . "thumb.jpg")) {
-		    $theThumb = $thePano[1][$i] . "thumb.jpg";
-			$thePanoLink = $thePano[1][$i];
-			$theImageLink = '<img src="' . $theThumb . '" alt="Panorama" title="Click to open Panorama" style="cursor:pointer;" onClick="window.open(\'' . $thePano[1][$i] . '\',\'_blank\');return false;" />';
-			$panorepl[] = $theImageLink;
+		
+		if (is_dir($abspanoPath)) {
+				if (file_exists($abspanoPath . "thumb.jpg")) {
+				$theThumb = $thePano[1][$i] . "thumb.jpg";
+				$thePanoLink = $thePano[1][$i];
+				$theImageLink = '<img src="' . $theThumb . '" alt="Panorama" title="Click to open Panorama" style="cursor:pointer;" onClick="window.open(\'' . $thePano[1][$i] . '\',\'_blank\');return false;" />';
+				$panorepl[] = $theImageLink;
+			} else {
+				$panorepl[] = '<iframe src="' . $thePano[1][$i] . '" seamless width="' . get_option("PanoramaEmbedGP_width") . 'px" height ="' . get_option("PanoramaEmbedGP_height") . 'px"></iframe>';
+			}
 		} else {
-		    $panorepl[] = '<iframe src="' . $thePano[1][$i] . '" seamless width="' . get_option("PanoramaEmbedGP_width") . 'px" height ="' . get_option("PanoramaEmbedGP_height") . 'px"></iframe>';
-
+			$panorepl[] = '<iframe src="' . $thePano[1][$i] . '" seamless width="' . get_option("PanoramaEmbedGP_width") . 'px" height ="' . get_option("PanoramaEmbedGP_height") . 'px"></iframe>';
 		}
 	}
     $content = str_replace ($panotags, $panorepl, $content);
@@ -56,15 +59,20 @@ function PanoramaEmbedOptionsGP() {
 	<p>Panorama Embed is made by <a href="http://gpwrite.com/" target="_blank"">Gede Pasek</a></p>
 	<p></p>
 	<p>Use of the plugin:</p>
+	<p><b>Method One</b></p>
 	<p>Add this to your post: <b>[panoembed]</b><i>/directory/of/your/panorama/</i><b>[/panoembed]</b></p>
 	<p>The <i>directory of your panorama</i>, is a directory relative to the root of your domain.</p>
 	<p>So, if your panorama is located at www.yourdomain.com/panoramas/pano/ , you enter <b>[panoembed]</b><i>/panoramas/pano/</i><b>[/panoembed]</b></p>
 	<p>The plugin assumes that there is a default html file in that directory that will be served, such as index.htm or index.php</p>
 	<p>The plugin loads an iframe in your post, with the content of the directory, <b>unless</b> there is a thumb.jpg in that directory. Then, the plugin will show that thumb.jpg, linking to the panorama (directory) in a new window.</p>
+	<p><b>Method Two</b></p>
+	<p>Add this to your post: <b>[panoembed]</b><i>/directory/of/your/panorama/somefile.html</i><b>[/panoembed]</b></p>
+	<p>The somefile.html will be shown in an iframe in your post. So, you can show many different panoramas, located<br />
+	in the same directory. There is no search for a thumb.jpg in this case</p>
 	<p></p>
 	<p>The panorama plugin has the option to set the width and height of the embedded panorama iframe.</p>
 	<p>For comments, remarks, demos, samples, go to <a href="http://gpwrite.com/" target="_blank"">my blog.</a>
-	<h3>Settings:</h3>
+	<h3>Iframe size settings:</h3>
 	
 <form method='POST' action='options.php'>
     <?php settings_fields('PanoramaEmbedGP_options'); ?>
