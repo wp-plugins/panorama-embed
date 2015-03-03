@@ -5,7 +5,7 @@ Donate link: http://gpwrite.com/panorama-embed-for-wordpress/
 Tags: panorama,embed,360 degree panorama,embedding,iframe,ptgui,krpano,virtual tour,360,kolor,pano2vr,panotour,flash panorama,html5 panorama,photography,vr,salado,salado player,ffp,flashificator,gigapixel
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 1.6
+Stable tag: 1.7
 License: GPLv2 or later
 
 == Description ==
@@ -43,6 +43,10 @@ a "clean" web page, that shows the panorama at 100% width and 100% height.
 (unless you need otherwise)
 
 == Changelog ==
+
+= 1.7.0 =
+
+* Updated Version Info, to confirm everything works in the latest Worpress Versions.
 
 = 1.6.0 =
 * Added possiblity to link to individual files, no need to have each panorama
